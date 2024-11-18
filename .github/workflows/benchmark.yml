@@ -11,18 +11,15 @@ on:
 jobs:
   benchmark:
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        rust: [stable]  # You can specify other Rust versions if needed
 
     steps:
     - name: Checkout repository
       uses: actions/checkout@v3
 
     - name: Set up Rust
-      uses: actions/setup-rust@v1
+      uses: actions/setup-rust@v2  # Using the correct action version
       with:
-        rust-version: ${{ matrix.rust }}  # Use the matrix for different Rust versions
+        rust-version: stable  # You can specify a version if needed
 
     - name: Install dependencies
       run: cargo install criterion
