@@ -10,13 +10,17 @@ env:
   CARGO_TERM_COLOR: always
 
 jobs:
-  build:
+  benchmark:
 
     runs-on: ubuntu-latest
 
     steps:
     - uses: actions/checkout@v4
+    - name: Set up Rust
+      uses: actions/setup-rust@v2  # Ensure Rust is set up
+      with:
+        rust-version: stable
     - name: Build
       run: cargo build --verbose
-    - name: Run tests
-      run: cargo test --verbose
+    - name: Run benchmarks
+      run: cargo bench --verbose  # Run the benchmarks here
