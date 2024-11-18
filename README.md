@@ -4,9 +4,9 @@
 
 [benchmarking rust code](https://engineering.deptagency.com/benchmarking-rust-code-using-criterion-rs)
   
-  [dev-dependencies]
+  ```[dev-dependencies]
   criterion = {version = "0.3", features = ["html_reports"]}
 
   [[bench]]
   name = "euler1_benchmark"
-  harness = false
+  harness = false```
