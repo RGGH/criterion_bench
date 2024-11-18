@@ -1,28 +1,42 @@
-name: Run Rust Benchmarks
+name: Rust Benchmarks
+
+run-name: "Benchmark run '${{ github.head_ref || github.ref_name }}'"
 
 on:
-  push:
-    branches:
-      - main
-  pull_request:
-    branches:
-      - main
+  workflow_dispatch:
+    # This allows manual triggering of the workflow from GitHub Actions.
+
+defaults:
+  run:
+    shell: bash
 
 jobs:
   benchmark:
+    name: Run Benchmarks
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout repository
-      uses: actions/checkout@v3
+      # Check out the repository
+      - uses: actions/checkout@v4
 
-    - name: Set up Rust
-      uses: actions/setup-rust@v2  # Using the correct action version
-      with:
-        rust-version: stable  # You can specify a version if needed
+      # Install Rust using actions-rs/toolchain
+      - name: Install latest stable Rust
+        uses: actions-rs/toolchain@v1
+        with:
+          profile: minimal
+          toolchain: stable
+          override: true
 
-    - name: Install dependencies
-      run: cargo install criterion
+      # Cache dependencies to speed up builds
+      - name: Cache dependencies
+        uses: actions/cache@v3
+        with:
+          path: |
+            ~/.cargo/registry
+            ~/.cargo/git
+            target
+          key: ${{ runner.os }}-cargo-${{ hashFiles('**/Cargo.lock') }}
 
-    - name: Run benchmarks
-      run: cargo bench
+      # Run the benchmarks
+      - name: Run Benchmarks
+        run: cargo bench --verbose
