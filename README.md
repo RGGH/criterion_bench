@@ -3,10 +3,12 @@
 [The Book - bench](https://doc.rust-lang.org/cargo/commands/cargo-bench.html)
 
 [benchmarking rust code](https://engineering.deptagency.com/benchmarking-rust-code-using-criterion-rs)
+
+### Add to Cargo.toml 
   
   ```[dev-dependencies]
   criterion = {version = "0.3", features = ["html_reports"]}
 
   [[bench]]
   name = "euler1_benchmark"
-  harness = false```
+  harness = false
