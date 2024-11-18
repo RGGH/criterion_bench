@@ -1,1 +1,1 @@
-[![Benchmark](https://github.com/RGGH/criterion_bench/actions/workflows/benchmark.yml/badge.svg)](https://github.com/RGGH/criterion_bench/actions/workflows/benchmark.yml)
+[![Benchmark](https://github.com/RGGH/criterion_bench/actions/workflows/benchmark.yml/badge.svg)](https://github.com/RGGH/criterion_bench/actions/workflows/benchmark.yml) [![Rust](https://github.com/RGGH/criterion_bench/actions/workflows/rust.yml/badge.svg)](https://github.com/RGGH/criterion_bench/actions/workflows/rust.yml)
