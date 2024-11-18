@@ -6,6 +6,7 @@
 
 ### Add to Cargo.toml 
   
+  ```
   [dev-dependencies]
   criterion = {version = "0.3", features = ["html_reports"]}
 
